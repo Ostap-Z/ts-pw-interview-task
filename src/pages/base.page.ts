@@ -10,9 +10,12 @@ abstract class BasePage {
 
   public constructor(protected readonly page: Page) {}
 
-  public async open(url?: string): Promise<void> {
+  public async open(
+    url?: string,
+    options?: { timeout?: number; message?: string }
+  ): Promise<void> {
     await this.page.goto(url ?? this.url);
-    await this.expectLoaded();
+    await this.expectLoaded(options);
   }
 
   public async expectHasTitle(title: string): Promise<void> {
