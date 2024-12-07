@@ -1,4 +1,4 @@
-import type { HttpClient } from "../types/http.client";
+import type { HttpClient } from "./types/http.client";
 import PostsController from "./controllers/posts.controller";
 
 class API {

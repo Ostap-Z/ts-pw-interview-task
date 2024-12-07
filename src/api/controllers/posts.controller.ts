@@ -1,4 +1,4 @@
-import type { HttpResponse } from "../../types/http.response";
+import type { HttpResponse } from "../types/http.response";
 import type { Post } from "../models/post.model";
 import BaseController from "./base.controller";
 

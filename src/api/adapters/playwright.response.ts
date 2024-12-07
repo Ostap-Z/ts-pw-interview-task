@@ -1,5 +1,5 @@
 import type { APIResponse } from "@playwright/test";
-import { HttpResponse } from "../../types/http.response";
+import { HttpResponse } from "../types/http.response";
 
 export class PlaywrightResponse implements HttpResponse {
   public readonly status: number = this.response.status();

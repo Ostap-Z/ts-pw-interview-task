@@ -1,4 +1,4 @@
-import type { HttpClient } from "../../types/http.client";
+import type { HttpClient } from "../types/http.client";
 
 abstract class BaseController {
   public constructor(
