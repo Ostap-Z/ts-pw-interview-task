@@ -1,6 +1,6 @@
-import { test, expect } from "@playwright/test";
+import { appFixture } from "../../src/fixtures/fixtures";
 
-test("page should has the 'Example Domain' title", async ({ page }) => {
-  await page.goto("/");
-  await expect(page).toHaveTitle("Example Domain");
+appFixture("page should has the 'Example Domain' title", async ({ app }) => {
+  await app.examplePage.open();
+  await app.examplePage.expectHasTitle("Example Domain");
 });

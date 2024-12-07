@@ -1,7 +1,7 @@
 import type { Serializable } from "node:child_process";
 import type { APIRequestContext } from "@playwright/test";
-import type { HttpClient } from "../../types/http.client";
-import type { HttpResponse } from "../../types/http.response";
+import type { HttpClient } from "../types/http.client";
+import type { HttpResponse } from "../types/http.response";
 import { PlaywrightResponse } from "../adapters/playwright.response";
 
 class PlaywrightClient implements HttpClient {
