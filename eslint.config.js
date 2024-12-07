@@ -31,6 +31,7 @@ export default [
         { argsIgnorePattern: "^_" },
       ],
       "playwright/expect-expect": "off",
+      "playwright/no-standalone-expect": "off",
     },
   },
   {
