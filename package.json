@@ -1,0 +1,43 @@
+{
+  "name": "typescript-playwright-project",
+  "version": "1.0.0",
+  "description": "E2E Testing project with Playwright and TypeScript",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": "20.18.0"
+  },
+  "scripts": {
+    "prepare": "playwright install --with-deps",
+    "test": "playwright test",
+    "test:e2e": "playwright test tests/e2e/",
+    "test:api": "playwright test --project=api",
+    "test:chrome": "playwright test --project=e2e:chromium",
+    "test:firefox": "playwright test --project=e2e:firefox",
+    "test:safari": "playwright test --project=e2e:webkit",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "e2e",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^22.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.16.0",
+    "eslint-plugin-playwright": "^2.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  }
+}
