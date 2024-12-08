@@ -5,6 +5,34 @@ This project is a skeleton for end-to-end and API tests using TypeScript and Pla
 It is designed for an interview task and includes a basic setup for the tests and tools to run them.
 The project is configured to run tests for both the API and the UI.
 
+## Continuous Integration (CI)
+
+This project uses GitHub Actions for Continuous Integration. The workflow is configured to:
+
+- Perform static code checks (linting and type checking)
+- Run Playwright API and UI tests
+- Generate and publish test reports to GitHub Pages
+
+### Static Checks Job
+
+Before running tests, the CI pipeline performs comprehensive static code analysis:
+
+- **Linting**: Checks code quality and enforces coding standards using ESLint
+- **Type Checking**: Ensures type safety using TypeScript compiler
+- **Fail-Fast Mechanism**: Stops the workflow if any checks fail
+
+### Workflow Triggers
+
+- **Pull Request**: Automatically triggered on PRs to `main` branch
+- **Manual Dispatch**: Can be manually triggered from [GitHub Actions](https://github.com/Ostap-Z/ts-pw-interview-task/actions)
+
+### Test Report
+
+After each workflow run:
+
+- Test reports are generated using Playwright's HTML reporter
+- You can access the latest test report from the [GitHub Pages](https://ostap-z.github.io/ts-pw-interview-task/)
+
 ## Project Setup
 
 ### Prerequisites
