@@ -25,6 +25,12 @@ Before running tests, the CI pipeline performs comprehensive static code analysi
 
 - **Pull Request**: Automatically triggered on PRs to `main` branch
 - **Manual Dispatch**: Can be manually triggered from [GitHub Actions](https://github.com/Ostap-Z/ts-pw-interview-task/actions)
+  - **Project Selection**: Choose from available Playwright projects:
+    - `api`: Run API tests
+    - `e2e:chromium`: Run E2E tests on Chrome
+    - `e2e:firefox`: Run E2E tests on Firefox
+    - `e2e:webkit`: Run E2E tests on Safari
+    - `all`: Run all test projects
 
 ### Test Report
 
