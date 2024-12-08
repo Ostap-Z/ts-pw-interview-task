@@ -8,8 +8,9 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
-  workers: process.env.CI ? Number(process.env.CORES) / 2 || 1 : undefined,
-
+  workers: process.env.CI
+    ? Math.max(1, Math.floor(parseInt(process.env.CORES || "2", 10) / 2))
+    : undefined,
   reporter: [["html", { outputFolder: "playwright-report", open: "never" }]],
   use: {
     trace: "retain-on-failure",
