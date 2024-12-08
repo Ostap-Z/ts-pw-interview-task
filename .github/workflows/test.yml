@@ -38,6 +38,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -51,9 +52,13 @@ jobs:
   playwright_tests:
     needs: static_checks
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.49.0
+    timeout-minutes: 10
     strategy:
       fail-fast: false
     env:
+      HOME: /root
       API_BASE_URL: https://jsonplaceholder.typicode.com
       UI_BASE_URL: https://example.com
 
@@ -69,16 +74,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
       - name: Install Playwright Browsers
-        run: npm run prepare
+        run: npx playwright install --with-deps
 
       - name: Run Playwright tests
         run: |
-          if [ "${{ inputs.project }}" = "all" ]; then
+          if [ "${{ inputs.project || 'all' }}" = "all" ]; then
             npm run test
           else
             npm run test -- --project="${{ inputs.project }}"
