@@ -20,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+    env:
+      API_BASE_URL: https://jsonplaceholder.typicode.com
+      UI_BASE_URL: https://example.com
 
     steps:
       - name: Checkout
