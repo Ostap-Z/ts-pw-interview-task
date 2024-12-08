@@ -5,6 +5,18 @@ on:
     branches: [main, master]
 
   workflow_dispatch:
+    inputs:
+      project:
+        description: 'Playwright project to run'
+        required: true
+        type: choice
+        options:
+          - api
+          - e2e:chromium
+          - e2e:firefox
+          - e2e:webkit
+          - all
+        default: 'all'
 
 permissions:
   contents: read
@@ -65,7 +77,12 @@ jobs:
         run: npm run prepare
 
       - name: Run Playwright tests
-        run: npm run test
+        run: |
+          if [ "${{ inputs.project }}" = "all" ]; then
+            npm run test
+          else
+            npm run test -- --project="${{ inputs.project }}"
+          fi
 
       - name: Upload artifact
         if: always()
