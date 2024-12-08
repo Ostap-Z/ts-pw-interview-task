@@ -16,14 +16,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  playwright_tests:
+  static_checks:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    env:
-      API_BASE_URL: https://jsonplaceholder.typicode.com
-      UI_BASE_URL: https://example.com
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,9 +27,36 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Run Type Check
+        run: npm run type-check
+
+  playwright_tests:
+    needs: static_checks
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    env:
+      API_BASE_URL: https://jsonplaceholder.typicode.com
+      UI_BASE_URL: https://example.com
+
+    steps:
       - name: Get CPU cores
         id: get-cores
         run: echo "CORES=$(nproc)" >> $GITHUB_ENV
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
 
       - name: Install dependencies
         run: npm ci
