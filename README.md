@@ -50,7 +50,7 @@ After each workflow run:
 
 1. Clone the repository
 2. Run `npm install`
-3. Run `npm run prepare` to install Playwright browsers
+3. Run `npx playwright install --with-deps` to install Playwright browsers
 4. Copy `.env.example` to `.env` and update the values:
 
    ```bash

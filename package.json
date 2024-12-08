@@ -8,7 +8,6 @@
     "node": "20.18.0"
   },
   "scripts": {
-    "prepare": "playwright install --with-deps",
     "test": "playwright test",
     "test:e2e": "playwright test tests/e2e/",
     "test:api": "playwright test --project=api",
