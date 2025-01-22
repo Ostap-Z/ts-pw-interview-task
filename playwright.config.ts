@@ -1,7 +1,10 @@
-import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
+import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
+import { gitStatus } from "./src/reporter/metadata";
 
 dotenv.config();
+
+const isMainWorker = !process.env.TEST_WORKER_INDEX;
 
 export default defineConfig({
   testDir: "./tests",
@@ -12,6 +15,7 @@ export default defineConfig({
     ? Math.max(1, Math.floor(parseInt(process.env.CORES || "2", 10) / 2))
     : undefined,
   reporter: [["html", { outputFolder: "playwright-report", open: "never" }]],
+  metadata: isMainWorker ? gitStatus() : undefined,
   use: {
     trace: "retain-on-failure",
   },
